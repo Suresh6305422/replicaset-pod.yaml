@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  labels:
+   name: nginx
+   purpose: demo
+spec:
+  minReadySeconds: 2
+  replicas: 3
+  selector:
+    matchLabels:
+      name: nginx
+  template:
+    metadata:
+      labels: 
+        name: nginx
+    spec:
+      containers:
+        - image: nginx
+          name: ngi
+          ports:
+            - containerPort: 80
+              protocol: TCP           
